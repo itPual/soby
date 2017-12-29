@@ -1,0 +1,11 @@
+﻿<div class="dropdown  navbar-right">
+    <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">
+        @Resources.Resource.ChooseLang
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)</li>
+        <li>@Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru" }, null)</li>
+        <li>@Html.ActionLink("Українська", "ChangeCulture", "Home", new { lang = "uk" }, null)</li>
+    </ul>
+</div>

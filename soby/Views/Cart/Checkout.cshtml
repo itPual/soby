@@ -1,0 +1,43 @@
+﻿@model soby.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "GameStore: форма заказа";
+}
+
+<h2>@Resources.Resource.PlaceNow</h2>
+<p>@Resources.Resource.EnterContact</p>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary();
+    <h3>@Resources.Resource.Data</h3>
+    <div class="form-group">
+        <label>@Resources.Resource.YourName</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+
+    <h3>@Resources.Resource.DeliveryAddress</h3>
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap")
+        {
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+            </div>
+        }
+    }
+
+    <h3>@Resources.Resource.Options</h3>
+    <div class="checkbox">
+        <label>
+            @Html.EditorFor(x => x.GiftWrap)
+            @Resources.Resource.UseGiftWrap
+        </label>
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="@Resources.Resource.EditOrder" />
+    </div>
+}
